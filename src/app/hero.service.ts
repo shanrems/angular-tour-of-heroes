@@ -1,6 +1,4 @@
-/*Diri na code kay ang makita command pattern and observer pattern
-
-*/
+/*Command pattern and Observer pattern*/
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
@@ -23,7 +21,7 @@ export class HeroService {
     private messageService: MessageService) { }
 
   /** GET heroes from the server */
-  getHeroes(): Observable<Hero[]> {//Kani kay command pattern 
+  getHeroes(): Observable<Hero[]> { //Command pattern 
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
         tap(_ => this.log('fetched heroes')),
@@ -32,7 +30,7 @@ export class HeroService {
   }
 
   /** GET hero by id. Return `undefined` when id not found */
-  getHeroNo404<Data>(id: number): Observable<Hero> { // kani sad command pattern
+  getHeroNo404<Data>(id: number): Observable<Hero> { //Command pattern
     const url = `${this.heroesUrl}/?id=${id}`;
     return this.http.get<Hero[]>(url)
       .pipe(
@@ -46,18 +44,17 @@ export class HeroService {
   }
 
   /** GET hero by id. Will 404 if id not found */
-  getHero(id: number): Observable<Hero> { // kani pud command pattern
+  getHero(id: number): Observable<Hero> { //Command pattern
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Hero>(url).pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Hero>(`getHero id=${id}`))
     );
   }
-  //ang mga searchHeroes, addHeroes, deleteHero, and updateHero kay command pattern
-  // ngano man command pattern ni sila?
-  /*kay kani na mga method kay gina notif ang object or ang method na mag work sila na dili bal an sang end user kung unsa or paunsa 
-  naga work kay basta siya gusto niya lang mag add mag delete mag update kag mag search murag gina sugo niya na mag add ka mag delete ka 
-  command or sugo 
+  //searchHeroes, addHeroes, deleteHero, and updateHero are Command patterns
+
+  /*This method notifies the object or method to work that the end user doesn't have to know, 
+  this only shows and allows the users to Add, Delete, Update, and Search command
   */
 
   /* GET heroes whose name contains search term */
@@ -76,7 +73,7 @@ export class HeroService {
 
   //////// Save methods //////////
 
-  /** POST: add a new hero to the server */
+  /** POST: Adds a new hero to the server */
   addHero(hero: Hero): Observable<Hero> {
     return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions).pipe(
       tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
@@ -84,7 +81,7 @@ export class HeroService {
     );
   }
 
-  /** DELETE: delete the hero from the server */
+  /** DELETE:Deletes the hero from the server */
   deleteHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
 
@@ -94,7 +91,7 @@ export class HeroService {
     );
   }
 
-  /** PUT: update the hero on the server */
+  /** PUT: Updates the hero on the server */
   updateHero(hero: Hero): Observable<any> {
     return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
       tap(_ => this.log(`updated hero id=${hero.id}`)),
@@ -122,7 +119,7 @@ export class HeroService {
       return of(result as T);
     };
   }
-//observer pattern
+//Observer pattern
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);

@@ -1,6 +1,5 @@
-/*Diri kay makita ang strategy pattern 
-diri kay naga auto generate na ug id inig mag add kag hero or name sa na mag dagdag sa existing na id number
-*/
+/*Strategy pattern 
+This auto generates the id if the user adds a hero or name in the existing id number*/
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Hero } from './hero';
@@ -8,7 +7,8 @@ import { Hero } from './hero';
 @Injectable({
   providedIn: 'root',
 })
-//diri naga implement sa InMemoryDbService na gi import from the angular-in-memory-web-api'
+
+//This implements in the InMemoryDbService that imports from the 'angular-in-memory-web-api'
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const heroes = [
@@ -31,7 +31,7 @@ export class InMemoryDataService implements InMemoryDbService {
   // if the heroes array is not empty, the method below returns the highest
   // hero id + 1.
 
-  //kani ang strategy pattern 
+  //Strategy pattern 
   genId(heroes: Hero[]): number {
     return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.id)) + 1 : 11;
   }
