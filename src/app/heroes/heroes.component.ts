@@ -1,5 +1,7 @@
+//Observer Pattern
+//diri ang events diri ga work ang delete kag add 
+/*Ang heroes Component naga act as observer  */
 import { Component, OnInit } from '@angular/core';
-
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 
