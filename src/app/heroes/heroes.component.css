@@ -6,6 +6,14 @@
   width: 15em;
 }
 
+.heroes-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+}
+
 input {
   display: block;
   width: 100%;
@@ -33,6 +41,8 @@ input {
   border-radius: 4px;
   display: block;
   width: 100%;
+  margin-left: 225%; /*move right to the buttons*/
+
 }
 
 .heroes a:hover {
@@ -57,9 +67,10 @@ input {
   top: -4px;
   height: 1.8em;
   min-width: 16px;
-  text-align: right;
+  text-align: center;
   margin-right: .8em;
   border-radius: 4px 0 0 4px;
+
 }
 
 .add-button {
@@ -75,8 +86,8 @@ input {
 
 button.delete {
   position: absolute;
-  left: 210px;
-  top: 5px;
+  left: 310%; /*x button going to the right*/
+  top: 3px;
   background-color: white;
   color:  #525252;
   font-size: 1.1rem;

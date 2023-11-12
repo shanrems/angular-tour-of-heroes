@@ -4,6 +4,13 @@ h2 {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
   }
+
+  .messages-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30px;
+  }
   
   .clear {
     color: #333;
@@ -12,7 +19,16 @@ h2 {
     padding: 1rem;
     border-radius: 4px;
     font-size: 1rem;
+    margin-left: 15.5%;
   }
+
+  .clear-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30px;
+  }
+
   .clear:hover {
     color: white;
     background-color: #42545C;
